@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-git clone https://github.com/neovim/neovim.git $HOME/code/tools/nvim
-cd $HOME/code/tools/nvim
+git clone https://github.com/neovim/neovim.git $HOME/code/tools/neovim
+cd $HOME/code/tools/neovim
 git fetch
 git checkout v0.11.0
 
