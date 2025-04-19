@@ -11,10 +11,9 @@ The script will install the following:
 - [x] tmux
 - [x] alacritty
 - [x] jq
-- [] Docker
+- [ ] Docker
 - [x] Iosevka Font
 - [x] feh
 - [x] picom
-- [] setxkmap
 - [x] Anime wallpapers
 

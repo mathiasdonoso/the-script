@@ -16,7 +16,7 @@ ln -s $(which fdfind) ~/.local/bin/fd
 # Rust
 echo "Installing RUST to build stuff later..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-. $HOME/.bashrc
+. "$HOME/.cargo/env"
 
 # ripgrep
 echo "Downloading and installing ripgrep..."
@@ -49,11 +49,12 @@ for script in "$SCRIPTS_DIR"/*; do
 done
 
 # dotfiles
-echo "Downloading the waifus..."
+echo "Configuring dotfiles..."
 cd $HOME
 git clone --recurse-submodules https://github.com/mathiasdonoso/dotfiles.git
 rm .bashrc
 cd dotfiles
+echo "stowing it..."
 stow .
 cd $HOME
-. $HOME/.bashrc
+. .bashrc
