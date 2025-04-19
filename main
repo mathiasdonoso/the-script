@@ -52,7 +52,8 @@ done
 echo "Downloading the waifus..."
 cd $HOME
 git clone --recurse-submodules https://github.com/mathiasdonoso/dotfiles.git
+rm .bashrc
 cd dotfiles
-stow --adopt .
+stow .
 cd $HOME
 . $HOME/.bashrc
