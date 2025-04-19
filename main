@@ -11,6 +11,7 @@ sudo apt update
 # Rust
 echo "Installing RUST to build stuff later..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. $HOME/.bashrc
 
 # some apt packages
 echo "Downloading utils..."
@@ -54,4 +55,4 @@ git clone --recurse-submodules https://github.com/mathiasdonoso/dotfiles.git
 cd dotfiles
 stow --adopt .
 cd $HOME
-. .bashrc
+. $HOME/.bashrc
