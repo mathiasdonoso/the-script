@@ -36,6 +36,22 @@ rm PkgTTC*.zip
 sudo fc-cache
 
 # specific builds
-./alacritty
-./nvim
-./picom
+SCRIPTS_DIR="./runs"
+
+for script in "$SCRIPTS_DIR"/*; do
+  if [[ -x "$script" && -f "$script" ]]; then
+    echo "Running $script..."
+    "$script"
+  else
+    echo "Skipping $script (not executable or not a regular file)"
+  fi
+done
+
+# dotfiles
+echo "Downloading the waifus..."
+cd $HOME
+git clone --recurse-submodules https://github.com/mathiasdonoso/dotfiles.git
+cd dotfiles
+stow --adopt .
+cd $HOME
+. .bashrc
