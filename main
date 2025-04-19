@@ -54,7 +54,6 @@ cd $HOME
 git clone --recurse-submodules https://github.com/mathiasdonoso/dotfiles.git
 rm .bashrc
 cd dotfiles
-echo "stowing it..."
 stow .
-cd $HOME
-. .bashrc
+
+echo "Please run: source ~/.bashrc or restart your terminal."
