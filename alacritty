@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+git clone https://github.com/alacritty/alacritty.git $HOME/code/tools/alacritty
+cd $HOME/code/tools/alacritty
+git fetch
+git checkout v0.14.0
+
+sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+
+cargo build --release
+
+cd target/release
+sudo cp alacritty /usr/bin/

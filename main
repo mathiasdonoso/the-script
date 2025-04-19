@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+mkdir -p $HOME/code/tools
+mkdir -p $HOME/code/projects
+mkdir -p $HOME/code/playground
+mkdir -p $HOME/code/test
+
+echo "Updating dependencies..."
+sudo apt update
+
+# Rust
+echo "Installing RUST to build stuff later..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# some apt packages
+echo "Downloading utils..."
+sudo apt install git tmux i3 jq feh stow fzf curl tldr fd-find
+ln -s $(which fdfind) ~/.local/bin/fd
+
+# ripgrep
+echo "Downloading and installing ripgrep..."
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
+sudo dpkg -i ripgrep_14.1.0-1_amd64.deb
+rm ripgrep_*.deb
+
+# wallpapers
+echo "Downloading the waifus..."
+git clone https://github.com/mathiasdonoso/anime.git ~/Pictures/anime
+
+# fonts
+echo "Downloading fonts... this could take a while..."
+curl -s 'https://api.github.com/repos/be5invis/Iosevka/releases/latest' | jq -r ".assets[] | .browser_download_url" | grep PkgTTC-Iosevka | xargs -n 1 curl -L -O --fail --silent --show-error
+unzip 'PkgTTC*.zip'
+sudo mv Iosevka*.ttc /usr/local/share/fonts/
+rm PkgTTC*.zip
+sudo fc-cache
+
+# specific builds
+./alacritty
+./nvim
+./picom
