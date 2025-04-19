@@ -8,15 +8,15 @@ mkdir -p $HOME/code/test
 echo "Updating dependencies..."
 sudo apt update
 
-# Rust
-echo "Installing RUST to build stuff later..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-. $HOME/.bashrc
-
 # some apt packages
 echo "Downloading utils..."
 sudo apt install git tmux i3 jq feh stow fzf curl tldr fd-find
 ln -s $(which fdfind) ~/.local/bin/fd
+
+# Rust
+echo "Installing RUST to build stuff later..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. $HOME/.bashrc
 
 # ripgrep
 echo "Downloading and installing ripgrep..."
