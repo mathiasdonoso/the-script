@@ -17,3 +17,10 @@ The script will install the following:
 - [x] picom
 - [x] Anime wallpapers
 
+## Usage
+
+Run the installation script:
+
+```bash
+./install
+```
