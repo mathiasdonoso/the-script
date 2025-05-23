@@ -10,7 +10,7 @@ sudo apt update
 
 # some apt packages
 echo "Downloading utils..."
-sudo apt install git tmux i3 jq feh stow fzf curl tldr fd-find
+sudo apt install git tmux i3 jq feh stow fzf curl tldr fd-find flameshot
 ln -s $(which fdfind) ~/.local/bin/fd
 
 # Rust
