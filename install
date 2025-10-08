@@ -29,11 +29,20 @@ echo "Downloading the waifus..."
 git clone https://github.com/mathiasdonoso/anime.git ~/Pictures/anime
 
 # fonts
+# iosevka font
 echo "Downloading fonts... this could take a while..."
 curl -s 'https://api.github.com/repos/be5invis/Iosevka/releases/latest' | jq -r ".assets[] | .browser_download_url" | grep PkgTTC-Iosevka | xargs -n 1 curl -L -O --fail --silent --show-error
 unzip 'PkgTTC*.zip'
 sudo mv Iosevka*.ttc /usr/local/share/fonts/
 rm PkgTTC*.zip
+
+# monoid font
+curl -L 'https://cdn.rawgit.com/larsenwork/monoid/2db2d289f4e61010dd3f44e09918d9bb32fb96fd/Monoid.zip' -o Monoid.zip
+unzip 'Monoid.zip'
+sudo mv Monoid*.ttf /usr/local/share/fonts/
+rm Readme*.html
+rm Monoid.zip
+
 sudo fc-cache
 
 # specific builds
