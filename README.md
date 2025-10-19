@@ -11,7 +11,7 @@ The script will install the following:
 - [x] tmux
 - [x] alacritty
 - [x] jq
-- [ ] Docker
+- [x] Docker
 - [x] Iosevka Font
 - [x] feh
 - [x] picom
