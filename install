@@ -13,7 +13,11 @@ sudo apt purge curl
 
 sudo echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
 
-nix profile install
+mv flake.nix $HOME/code/flake.nix
+cd $HOME/code/
+nix profile add .#all
+
+cd $HOME/Downloads/
 
 # wallpapers
 echo "Downloading the waifus..."
