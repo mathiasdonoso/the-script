@@ -4,6 +4,7 @@ mkdir -p $HOME/code/tools
 mkdir -p $HOME/code/projects
 mkdir -p $HOME/code/playground
 mkdir -p $HOME/code/test
+mkdir -p $HOME/.local/bin
 
 echo "Updating dependencies..."
 sudo apt update
@@ -12,6 +13,9 @@ sudo apt update
 echo "Downloading utils..."
 sudo apt install git tmux i3 jq feh stow fzf curl tldr fd-find flameshot
 ln -s $(which fdfind) ~/.local/bin/fd
+
+# uv installation
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Rust
 echo "Installing RUST to build stuff later..."
@@ -61,8 +65,10 @@ done
 echo "Configuring dotfiles..."
 cd $HOME
 git clone --recurse-submodules https://github.com/mathiasdonoso/dotfiles.git
-rm .bashrc
+mv .bashrc .bashrc.bak
 cd dotfiles
 stow .
+cd $HOME
+rm .bashrc.bak
 
 echo "Please run: source ~/.bashrc or restart your terminal."
