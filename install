@@ -5,15 +5,18 @@ mkdir -p $HOME/code/projects
 mkdir -p $HOME/code/playground
 mkdir -p $HOME/code/test
 
+cp flake.nix $HOME/code/flake.nix
+
 sudo apt install curl
 
+cd $HOME/Downloads/
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
-
-sudo apt purge curl
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
 sudo echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
 
-mv flake.nix $HOME/code/flake.nix
+sudo apt purge curl
+
 cd $HOME/code/
 nix profile add .#all
 
@@ -26,14 +29,8 @@ git clone https://github.com/mathiasdonoso/anime.git ~/Pictures/anime
 # fonts
 mkdir -p /usr/local/share/fonts
 
-# iosevka font
-echo "Downloading fonts... this could take a while..."
-curl -s 'https://api.github.com/repos/be5invis/Iosevka/releases/latest' | jq -r ".assets[] | .browser_download_url" | grep PkgTTC-Iosevka | xargs -n 1 curl -L -O --fail --silent --show-error
-unzip 'PkgTTC*.zip'
-sudo mv Iosevka*.ttc /usr/local/share/fonts/
-rm PkgTTC*.zip
-
 # monoid font
+echo "Downloading fonts..."
 curl -L 'https://cdn.rawgit.com/larsenwork/monoid/2db2d289f4e61010dd3f44e09918d9bb32fb96fd/Monoid.zip' -o Monoid.zip
 unzip 'Monoid.zip'
 sudo mv Monoid*.ttf /usr/local/share/fonts/
