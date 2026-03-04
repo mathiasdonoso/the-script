@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+git clone https://github.com/vim/vim.git $HOME/code/tools/vim
+cd $HOME/code/tools/vim
+git fetch
+git checkout v8.2.5172
+
+sudo apt install lua5.4 luarocks libncurses-dev
+./configure --prefix=/usr/local
+sudo make
+sudo make install
